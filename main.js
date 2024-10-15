@@ -71,9 +71,16 @@ controlsFolder.add(controls, 'autoRotate');
 controlsFolder.add(controls, 'autoRotateSpeed', 0, 5);
 controlsFolder.open();
 
+const dracoLoader = new THREE.DRACOLoader();
+dracoLoader.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.6/');
+dracoLoader.setDecoderConfig({ type: 'js' });
+
 const loader = new THREE.GLTFLoader();
+loader.setDRACOLoader(dracoLoader);
+
+
 loader.load(
-    './models/scene.gltf',
+    './models/scenecomp.gltf',
     (gltf) => {
         scene.add(gltf.scene);
         
